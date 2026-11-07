@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Posts | DevBase</title>
+    <meta name="description" content="Developer-focused knowledge base and support blog for product updates, troubleshooting, engineering notes, and API guidance." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Go to homepage">
+          <div class="brand-mark">D</div>
+          <span>DevBase</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="">Home</a>
+          <a href="posts.html" class="active">Posts</a>
+          <a href="category.html" class="">Categories</a>
+          <a href="support.html" class="">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Light</span>
+          </button>
+          <a class="secondary-btn" href="support.html">Get help</a>
+          <a class="primary-btn" href="category.html">Explore docs</a>
+        </div>
+      </div>
+    </header>
+
+    
+    <main class="page-shell">
+      <section class="posts-header">
+        <div class="container">
+          <span class="eyebrow muted">Blog</span>
+          <h1>Latest engineering and support articles</h1>
+          <p>Explore release notes, troubleshooting guides, platform operations, and real-world engineering lessons from the DevBase team.</p>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="post-page-toolbar">
+          <div class="search-box filter-box" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4a6 6 0 104.56 10.28l4.72 4.72 1.41-1.41-4.72-4.72A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
+            <input id="postSearch" type="text" aria-label="Search posts" placeholder="Search posts, topics, or keywords" />
+          </div>
+
+          <div class="filters" aria-label="Filter posts by category">
+            <button class="chip active" type="button" data-filter="all">All</button>
+            <button class="chip" type="button" data-filter="engineering">Engineering</button>
+            <button class="chip" type="button" data-filter="support">Support</button>
+            <button class="chip" type="button" data-filter="operations">Operations</button>
+            <button class="chip" type="button" data-filter="security">Security</button>
+            <button class="chip" type="button" data-filter="integrations">Integrations</button>
+          </div>
+        </div>
+
+        <div class="posts-grid">
+        <article class="post-card article-card" data-tags="engineering,performance,api">
+          <div class="post-tag ">Featured</div>
+          <h3>How we reduced API response latency by 42%</h3>
+          <p>A practical breakdown of caching, queue prioritization, and observability improvements.</p>
+          <div class="meta-row">
+            <span>8 min read</span>
+            <span>Engineering</span>
+          </div>
+          <a class="primary-btn small-btn" href="api-latency.html">Read article</a>
+        </article>
+
+        <article class="post-card article-card" data-tags="support,mac,projector,display">
+          <div class="post-tag alt">How-to</div>
+          <h3>How to Connect a Mac to a Projector</h3>
+          <p>Connect by HDMI or AirPlay, choose mirroring or an extended display, and fix common issues.</p>
+          <div class="meta-row">
+            <span>5 min read</span>
+            <span>Support</span>
+          </div>
+          <a class="secondary-btn small-btn" href="mac-projector.html">Read article</a>
+        </article>
+      
+        <article class="post-card article-card" data-tags="support,troubleshooting,security">
+          <div class="post-tag alt">Troubleshooting</div>
+          <h3>Debugging token expiration issues in production</h3>
+          <p>Learn the exact checks for stale refresh flows, clock drift, and permission mismatches.</p>
+          <div class="meta-row">
+            <span>5 min read</span>
+            <span>Support</span>
+          </div>
+          <a class="secondary-btn small-btn" href="token-expiration.html">Read article</a>
+        </article>
+      
+        <article class="post-card article-card" data-tags="operations,incident,process">
+          <div class="post-tag ">Guide</div>
+          <h3>Designing a healthier incident communication process</h3>
+          <p>Create a reliable escalation path for leadership, support, and engineering teams.</p>
+          <div class="meta-row">
+            <span>6 min read</span>
+            <span>Operations</span>
+          </div>
+          <a class="primary-btn small-btn" href="incident-communication.html">Read article</a>
+        </article>
+      
+        <article class="post-card article-card" data-tags="integrations,api,operations">
+          <div class="post-tag alt">Integrations</div>
+          <h3>Webhook delivery failures: a playbook for recovery</h3>
+          <p>A step-by-step guide to diagnosing retries, dead letters, and downstream delivery drift.</p>
+          <div class="meta-row">
+            <span>7 min read</span>
+            <span>Integrations</span>
+          </div>
+          <a class="secondary-btn small-btn" href="webhook-delivery.html">Read article</a>
+        </article>
+      
+        <article class="post-card article-card" data-tags="security,authentication,engineering">
+          <div class="post-tag ">Security</div>
+          <h3>Authentication best practices for multi-tenant apps</h3>
+          <p>Strengthen session isolation, rotation, and access policies without slowing product teams down.</p>
+          <div class="meta-row">
+            <span>9 min read</span>
+            <span>Security</span>
+          </div>
+          <a class="primary-btn small-btn" href="auth-best-practices.html">Read article</a>
+        </article>
+      
+        <article class="post-card article-card" data-tags="product,engineering,operations">
+          <div class="post-tag alt">Product</div>
+          <h3>Scaling release notes without creating chaos</h3>
+          <p>Build a release communication system that keeps product, support, and customer teams aligned.</p>
+          <div class="meta-row">
+            <span>4 min read</span>
+            <span>Product</span>
+          </div>
+          <a class="secondary-btn small-btn" href="release-notes.html">Read article</a>
+        </article>
+      </div>
+        <div class="no-results">No posts match your search. Try another keyword or filter.</div>
+      </section>
+    </main>
+  
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand small">
+            <div class="brand-mark">D</div>
+            <span>DevBase</span>
+          </div>
+          <p>Developer knowledge base and support blog</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

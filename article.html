@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How we reduced API response latency by 42% | DevBase</title>
+    <meta
+      name="description"
+      content="Read our engineering article on reducing API latency, improving caching, and scaling observability for production systems."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Go to homepage">
+          <div class="brand-mark">D</div>
+          <span>DevBase</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Light</span>
+          </button>
+          <a class="secondary-btn" href="support.html">Get help</a>
+          <a class="primary-btn" href="category.html">Explore topics</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="article-shell">
+        <div class="container article-layout">
+          <div class="article-body">
+            <div class="eyebrow">Engineering</div>
+            <h1>How we reduced API response latency by 42%</h1>
+
+            <div class="article-meta">
+              <span>May 12, 2026</span>
+              <span>8 min read</span>
+              <span>By Team Engineering</span>
+            </div>
+
+            <p class="lead">
+              We saw the first clear signal during a burst in request volume:
+              response times were climbing even though compute usage remained steady.
+              The bottleneck was not CPU; it was how our services were handling repeated
+              reads, cold caches, and slow downstream lookups.
+            </p>
+
+            <h2>1. Identify the real bottleneck</h2>
+            <p>
+              Before changing the stack, we traced request flow end-to-end. We mapped
+              latency across the edge layer, our application servers, and dependency calls.
+              The biggest delay was not in our business logic. It was in repeated data fetches
+              to a high-churn dependency with uneven response times.
+            </p>
+
+            <blockquote>
+              The fastest improvement was not a rewrite—it was reducing unnecessary work.
+            </blockquote>
+
+            <h2>2. Add smarter caching at the right layer</h2>
+            <p>
+              We introduced a short-lived cache for hot paths that do not change often,
+              especially for customer profile lookups and settings. This reduced duplicate
+              reads without introducing stale data issues because the invalidation window
+              was tied to payload change events rather than a blanket timeout.
+            </p>
+
+            <ul>
+              <li>Short TTL for frequently accessed, low-risk data</li>
+              <li>Versioned cache keys for tenant-specific payloads</li>
+              <li>Async invalidation after permission or settings updates</li>
+            </ul>
+
+            <h2>3. Prioritize queue traffic</h2>
+            <p>
+              We also adjusted queue scheduling so customer-facing events were processed first.
+              Internal batch work was throttled and moved to lower-priority workers, which ensured
+              our API remained responsive during spikes.
+            </p>
+
+            <h2>4. Improve observability and alerting</h2>
+            <p>
+              Once the fixes were live, we needed confidence that the improvements would hold.
+              We added trace breakdowns by route, cache hit rate, and downstream dependency time.
+              This let the team spot regressions immediately and verify when a rollout was safe.
+            </p>
+
+            <div class="article-callout">
+              <strong>Result:</strong> average API latency dropped from 460ms to 265ms, and P95 latency
+              improved by 42% during the busiest 10% of traffic.
+            </div>
+          </div>
+
+          <aside class="article-sidebar">
+            <div class="sidebar-box">
+              <span class="eyebrow muted">In this series</span>
+              <ul class="popular-list">
+                <li><a href="article.html">Latency reduction patterns</a></li>
+                <li><a href="category.html">Support operations</a></li>
+                <li><a href="support.html">Incident response</a></li>
+                <li><a href="category.html">Platform reliability</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box highlight-box">
+              <span class="eyebrow muted">Need guidance?</span>
+              <h3>Talk to the team</h3>
+              <p>Need help with rollout, monitoring, or incident response? We can help.</p>
+              <a class="primary-btn full" href="support.html">Contact support</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand small">
+            <div class="brand-mark">D</div>
+            <span>DevBase</span>
+          </div>
+          <p>Developer documentation, blog posts, and support knowledge.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

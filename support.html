@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support | DevBase</title>
+    <meta name="description" content="Developer-focused knowledge base and support blog for product updates, troubleshooting, engineering notes, and API guidance." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Go to homepage">
+          <div class="brand-mark">D</div>
+          <span>DevBase</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="">Home</a>
+          <a href="posts.html" class="">Posts</a>
+          <a href="category.html" class="">Categories</a>
+          <a href="support.html" class="active">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Light</span>
+          </button>
+          <a class="secondary-btn" href="support.html">Get help</a>
+          <a class="primary-btn" href="category.html">Explore docs</a>
+        </div>
+      </div>
+    </header>
+
+    
+  <main class="page-shell">
+    <div class="container support-layout">
+      <section class="support-copy">
+        <div class="section-heading">
+          <span class="eyebrow muted">Support</span>
+          <h1>We’re here when things break.</h1>
+        </div>
+        <p>Reach out for troubleshooting, incident response, migration questions, or technical guidance from our engineering and support teams.</p>
+        <div class="support-cards">
+          <div class="mini-panel"><strong>Priority response</strong><span>Critical incidents: under 30 minutes</span></div>
+          <div class="mini-panel"><strong>Average response</strong><span>General requests: within 4 hours</span></div>
+        </div>
+      </section>
+
+      <section class="support-form-wrap">
+        <form class="support-form">
+          <div class="field-row"><label>Name<input type="text" placeholder="Your name" /></label></div>
+          <div class="field-row"><label>Email<input type="email" placeholder="you@company.com" /></label></div>
+          <div class="field-row"><label>Topic<select><option>Incident</option><option>Technical support</option><option>Migration</option><option>Billing</option></select></label></div>
+          <div class="field-row"><label>Message<textarea rows="5" placeholder="Tell us what you need help with..."></textarea></label></div>
+          <button class="primary-btn full" type="submit">Submit request</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand small">
+            <div class="brand-mark">D</div>
+            <span>DevBase</span>
+          </div>
+          <p>Developer knowledge base and support blog</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

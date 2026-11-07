@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories | DevBase</title>
+    <meta name="description" content="Developer-focused knowledge base and support blog for product updates, troubleshooting, engineering notes, and API guidance." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Go to homepage">
+          <div class="brand-mark">D</div>
+          <span>DevBase</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="">Home</a>
+          <a href="posts.html" class="">Posts</a>
+          <a href="category.html" class="active">Categories</a>
+          <a href="support.html" class="">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Light</span>
+          </button>
+          <a class="secondary-btn" href="support.html">Get help</a>
+          <a class="primary-btn" href="category.html">Explore docs</a>
+        </div>
+      </div>
+    </header>
+
+    
+  <main class="page-shell">
+    <div class="container narrow-page">
+      <div class="section-heading">
+        <span class="eyebrow muted">Browse by topic</span>
+        <h1>Knowledge base categories</h1>
+      </div>
+
+      <div class="category-grid category-page-grid">
+        <article class="category-card">
+          <div class="icon bg-blue">⚙</div>
+          <h3>Getting started</h3>
+          <p>Setup guides, onboarding, and workflow basics for new teams.</p>
+          <a class="mini-link" href="api-latency.html">Browse articles</a>
+        </article>
+        <article class="category-card">
+          <div class="icon bg-purple">🧩</div>
+          <h3>Integrations</h3>
+          <p>Connect third-party services, APIs, and internal tooling with confidence.</p>
+          <a class="mini-link" href="webhook-delivery.html">Browse articles</a>
+        </article>
+        <article class="category-card">
+          <div class="icon bg-green">🛡</div>
+          <h3>Security</h3>
+          <p>Access control, incident response, and secure platform operations.</p>
+          <a class="mini-link" href="auth-best-practices.html">Browse articles</a>
+        </article>
+        <article class="category-card">
+          <div class="icon bg-orange">📈</div>
+          <h3>Analytics</h3>
+          <p>Performance monitoring, trend analysis, and business reporting.</p>
+          <a class="mini-link" href="release-notes.html">Browse articles</a>
+        </article>
+      </div>
+
+      <div class="list-panel">
+        <h2>Popular posts</h2>
+        <div class="post-list">
+          
+            <a href="api-latency.html">
+              <span>How we reduced API response latency by 42%</span>
+              <small>Engineering</small>
+            </a>
+          
+            <a href="token-expiration.html">
+              <span>Debugging token expiration issues in production</span>
+              <small>Support</small>
+            </a>
+          
+            <a href="incident-communication.html">
+              <span>Designing a healthier incident communication process</span>
+              <small>Operations</small>
+            </a>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand small">
+            <div class="brand-mark">D</div>
+            <span>DevBase</span>
+          </div>
+          <p>Developer knowledge base and support blog</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

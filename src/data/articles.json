@@ -1,0 +1,114 @@
+{
+  "site": {
+    "title": "DevBase",
+    "tagline": "Developer knowledge base and support blog"
+  },
+  "posts": [
+    {
+      "slug": "api-latency",
+      "title": "How we reduced API response latency by 42%",
+      "category": "Engineering",
+      "tag": "Featured",
+      "readTime": "8 min read",
+      "date": "May 12, 2026",
+      "description": "A practical breakdown of caching, queue prioritization, and observability improvements.",
+      "tags": ["engineering", "performance", "api"],
+      "content": [
+        "We saw the first clear signal during a burst in request volume: response times were climbing even though compute usage remained steady.",
+        "The bottleneck was not CPU; it was how our services handled repeated reads, cold caches, and slow downstream lookups.",
+        "Before changing the stack, we traced the request flow end-to-end and mapped latency across the edge, application, and dependency layers.",
+        "The biggest delay was not in business logic. It was in repeated data fetches to a high-churn dependency with uneven response times.",
+        "We introduced a short-lived cache for hot paths that do not change often, especially for customer profile lookups and settings.",
+        "This reduced duplicate reads without stale data issues because the invalidation window was tied to payload change events rather than a blanket timeout.",
+        "We also adjusted queue scheduling so customer-facing events were processed first and moved internal batch work to lower-priority workers.",
+        "Once the fixes were live, we added trace breakdowns by route, cache hit rate, and downstream dependency time to verify the improvements held under load.",
+        "The result was a 42% improvement in P95 latency during the busiest traffic window."
+      ]
+    },
+    {
+      "slug": "token-expiration",
+      "title": "Debugging token expiration issues in production",
+      "category": "Support",
+      "tag": "Troubleshooting",
+      "readTime": "5 min read",
+      "date": "May 8, 2026",
+      "description": "Learn the exact checks for stale refresh flows, clock drift, and permission mismatches.",
+      "tags": ["support", "troubleshooting", "security"],
+      "content": [
+        "The strongest clue in token expiration incidents is usually not the token itself—it is the timing mismatch between clocks, refresh windows, and session policies.",
+        "Start by confirming whether the service expects an access token expiry window, a refresh token lifetime, or both.",
+        "Compare the server time, client time, and identity provider timestamps. Even a small skew can trigger refresh loops or premature expiry events.",
+        "Review retry behavior because client retry logic often amplifies the issue. A single timeout can trigger duplicate refresh requests and race conditions.",
+        "The most effective fix is usually to validate time drift and reduce duplicate refresh attempts before changing auth configuration."
+      ]
+    },
+    {
+      "slug": "incident-communication",
+      "title": "Designing a healthier incident communication process",
+      "category": "Operations",
+      "tag": "Guide",
+      "readTime": "6 min read",
+      "date": "May 2, 2026",
+      "description": "Create a reliable escalation path for leadership, support, and engineering teams.",
+      "tags": ["operations", "incident", "process"],
+      "content": [
+        "The fastest way to reduce incident stress is not more notifications—it is fewer unclear handoffs and better-defined ownership.",
+        "Every incident should answer the same four questions in the first update: what is happening, who owns it, what the impact is, and what is being done next.",
+        "Status updates should tell stakeholders what is known and whether the situation is improving. Decision-making should live in one incident commander thread.",
+        "Clear timestamps and ownership reduce duplicate discussions and help every team align on the same next steps.",
+        "Good incident communication becomes a force multiplier because it shortens the path to a stable recovery."
+      ]
+    },
+    {
+      "slug": "webhook-delivery",
+      "title": "Webhook delivery failures: a playbook for recovery",
+      "category": "Integrations",
+      "tag": "Integrations",
+      "readTime": "7 min read",
+      "date": "April 26, 2026",
+      "description": "A step-by-step guide to diagnosing retries, dead letters, and downstream delivery drift.",
+      "tags": ["integrations", "api", "operations"],
+      "content": [
+        "Webhook failures are rarely a single bug. They are usually a chain of delivery attempts, timeout policies, retry windows, and contract mismatches.",
+        "Start by classifying the failure: is it a receiver rejection, a timeout, or a dead-letter event after repeated retries?",
+        "Retries can create duplicate events if downstream systems are not idempotent. Add an event ID, replay window, and delivery state to make deduplication reliable.",
+        "Tracking retry backoff and logging attempt count makes the difference between a temporary incident and a long-running customer problem.",
+        "The best recovery strategies reduce noise, preserve idempotency, and improve the feedback loop between platform and client integrations."
+      ]
+    },
+    {
+      "slug": "auth-best-practices",
+      "title": "Authentication best practices for multi-tenant apps",
+      "category": "Security",
+      "tag": "Security",
+      "readTime": "9 min read",
+      "date": "April 18, 2026",
+      "description": "Strengthen session isolation, rotation, and access policies without slowing product teams down.",
+      "tags": ["security", "authentication", "engineering"],
+      "content": [
+        "In multi-tenant systems, authentication is less about who the user is and more about which tenant boundary they can access at the moment they make a request.",
+        "Treat tenant and user claims as separate concerns. Token validation should confirm tenant scope before any stateful action happens.",
+        "Scope permissions explicitly instead of relying on broad roles, and require fresh verification on tenant switches or re-authentication.",
+        "Rotate service credentials on a predictable schedule and keep short-lived sessions with explicit revocation paths.",
+        "The best auth design reduces blast radius by default rather than by exception."
+      ]
+    },
+    {
+      "slug": "release-notes",
+      "title": "Scaling release notes without creating chaos",
+      "category": "Product",
+      "tag": "Product",
+      "readTime": "4 min read",
+      "date": "April 10, 2026",
+      "description": "Build a release communication system that keeps product, support, and customer teams aligned.",
+      "tags": ["product", "engineering", "operations"],
+      "content": [
+        "Release notes become noisy when every team emits an update with different levels of detail and accuracy.",
+        "A single template for product changes, known issues, and migration instructions prevents confusion and reduces duplicate questions from support.",
+        "Document the customer impact clearly, and link every release note to the exact configuration or workflow change it affects.",
+        "This keeps both customers and internal teams aligned without requiring a large communication system to stay organized.",
+        "When release communication becomes consistent, the entire product lifecycle feels calmer."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How we reduced API response latency by 42% | DevBase</title>
+    <meta name="description" content="Developer-focused knowledge base and support blog for product updates, troubleshooting, engineering notes, and API guidance." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Go to homepage">
+          <div class="brand-mark">D</div>
+          <span>DevBase</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="">Home</a>
+          <a href="posts.html" class="active">Posts</a>
+          <a href="category.html" class="">Categories</a>
+          <a href="support.html" class="">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Light</span>
+          </button>
+          <a class="secondary-btn" href="support.html">Get help</a>
+          <a class="primary-btn" href="category.html">Explore docs</a>
+        </div>
+      </div>
+    </header>
+
+    
+    <main>
+      <article class="article-shell">
+        <div class="container article-layout">
+          <div class="article-body">
+            <div class="eyebrow">Engineering</div>
+            <h1>How we reduced API response latency by 42%</h1>
+            <div class="article-meta">
+              <span>May 12, 2026</span>
+              <span>8 min read</span>
+              <span>By Engineering Team</span>
+            </div>
+            <p class="lead">A practical breakdown of caching, queue prioritization, and observability improvements.</p>
+            <p>We saw the first clear signal during a burst in request volume: response times were climbing even though compute usage remained steady.</p><p>The bottleneck was not CPU; it was how our services handled repeated reads, cold caches, and slow downstream lookups.</p><p>Before changing the stack, we traced the request flow end-to-end and mapped latency across the edge, application, and dependency layers.</p><p>The biggest delay was not in business logic. It was in repeated data fetches to a high-churn dependency with uneven response times.</p><p>We introduced a short-lived cache for hot paths that do not change often, especially for customer profile lookups and settings.</p><p>This reduced duplicate reads without stale data issues because the invalidation window was tied to payload change events rather than a blanket timeout.</p><p>We also adjusted queue scheduling so customer-facing events were processed first and moved internal batch work to lower-priority workers.</p><p>Once the fixes were live, we added trace breakdowns by route, cache hit rate, and downstream dependency time to verify the improvements held under load.</p><p>The result was a 42% improvement in P95 latency during the busiest traffic window.</p>
+            <div class="article-callout"><strong>Outcome:</strong> A practical breakdown of caching, queue prioritization, and observability improvements.</div>
+          </div>
+
+          <aside class="article-sidebar">
+            <div class="sidebar-box">
+              <span class="eyebrow muted">Related</span>
+              <ul class="popular-list">
+                <li><a href="token-expiration.html">Debugging token expiration issues in production</a></li><li><a href="incident-communication.html">Designing a healthier incident communication process</a></li><li><a href="webhook-delivery.html">Webhook delivery failures: a playbook for recovery</a></li>
+              </ul>
+            </div>
+            <div class="sidebar-box highlight-box">
+              <span class="eyebrow muted">Need guidance?</span>
+              <h3>Talk to the team</h3>
+              <p>Need help with rollout, monitoring, or incident response? We can help.</p>
+              <a class="primary-btn full" href="support.html">Contact support</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+  
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand small">
+            <div class="brand-mark">D</div>
+            <span>DevBase</span>
+          </div>
+          <p>Developer knowledge base and support blog</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="posts.html">Posts</a>
+          <a href="category.html">Categories</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
